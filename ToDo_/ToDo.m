@@ -10,13 +10,6 @@
 
 @implementation ToDo
 
--(id)init {
-    
-    
-
-    
-    return self;
-}
 
 
 @end

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Master-->
@@ -57,6 +58,97 @@
             </objects>
             <point key="canvasLocation" x="1455" y="-630"/>
         </scene>
+        <!--EnterInfo-->
+        <scene sceneID="Kzg-c8-OcU">
+            <objects>
+                <viewController title="EnterInfo" id="dUn-2C-l3k" customClass="EnterInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y2S-on-a7L"/>
+                        <viewControllerLayoutGuide type="bottom" id="gYo-Qd-4iN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="neN-A7-4OB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter To Do Item" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iAT-4P-1C0">
+                                <rect key="frame" x="108" y="115" width="385" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="385" id="Sco-vl-eHS"/>
+                                    <constraint firstAttribute="height" constant="50" id="hIE-8m-PDu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ifp-ro-a4Y">
+                                <rect key="frame" x="216" y="268" width="94" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="3OH-HM-vsX"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="setPriority:" destination="dUn-2C-l3k" eventType="valueChanged" id="vtn-c1-SXs"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ec-uf-x5h">
+                                <rect key="frame" x="131" y="268" width="57" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="h9i-Ii-uoh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Details" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mk8-r6-FQD">
+                                <rect key="frame" x="108" y="185" width="385" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="385" id="BiD-Zs-PKm"/>
+                                    <constraint firstAttribute="height" constant="50" id="SPr-3D-gTm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJC-dQ-E5F">
+                                <rect key="frame" x="333" y="259" width="165" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="qKq-BD-HFh"/>
+                                    <constraint firstAttribute="width" constant="165" id="urR-v7-0I3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="storeInfo:" destination="dUn-2C-l3k" eventType="touchUpInside" id="Nma-1z-DgD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iJC-dQ-E5F" firstAttribute="leading" secondItem="neN-A7-4OB" secondAttribute="leadingMargin" constant="313" id="34w-rz-JtE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iJC-dQ-E5F" secondAttribute="trailing" constant="82" id="5f8-e1-wHg"/>
+                            <constraint firstItem="iAT-4P-1C0" firstAttribute="top" secondItem="y2S-on-a7L" secondAttribute="bottom" constant="51" id="GCO-7e-tHj"/>
+                            <constraint firstItem="6ec-uf-x5h" firstAttribute="leading" secondItem="neN-A7-4OB" secondAttribute="leadingMargin" constant="111" id="IxY-JE-Nps"/>
+                            <constraint firstItem="iAT-4P-1C0" firstAttribute="centerX" secondItem="neN-A7-4OB" secondAttribute="centerX" id="JJb-4g-9XI"/>
+                            <constraint firstItem="gYo-Qd-4iN" firstAttribute="top" secondItem="iJC-dQ-E5F" secondAttribute="bottom" constant="294" id="Ndo-v2-Ssv"/>
+                            <constraint firstItem="ifp-ro-a4Y" firstAttribute="leading" secondItem="6ec-uf-x5h" secondAttribute="trailing" constant="28" id="Ste-CV-Osr"/>
+                            <constraint firstItem="6ec-uf-x5h" firstAttribute="top" secondItem="Mk8-r6-FQD" secondAttribute="bottom" constant="33" id="Vxh-FP-XTe"/>
+                            <constraint firstItem="Mk8-r6-FQD" firstAttribute="centerX" secondItem="neN-A7-4OB" secondAttribute="centerX" id="afS-ez-ACN"/>
+                            <constraint firstItem="Mk8-r6-FQD" firstAttribute="top" secondItem="iAT-4P-1C0" secondAttribute="bottom" constant="20" id="dho-PQ-pWE"/>
+                            <constraint firstItem="ifp-ro-a4Y" firstAttribute="top" secondItem="Mk8-r6-FQD" secondAttribute="bottom" constant="33" id="pMH-Au-Frc"/>
+                            <constraint firstItem="gYo-Qd-4iN" firstAttribute="top" secondItem="6ec-uf-x5h" secondAttribute="bottom" constant="287" id="qsi-hH-hjK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="priorityLabel" destination="6ec-uf-x5h" id="WZ1-wG-CgA"/>
+                        <outlet property="stepper" destination="ifp-ro-a4Y" id="EMM-Pl-SAz"/>
+                        <outlet property="toDoDetail" destination="Mk8-r6-FQD" id="C4j-AR-zJh"/>
+                        <outlet property="toDoItem" destination="iAT-4P-1C0" id="qVU-ba-5gF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IrR-A8-DUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="79"/>
+        </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
@@ -102,6 +194,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <connections>
+                        <segue destination="dUn-2C-l3k" kind="show" identifier="EnterInfo" action="showDetailViewController:sender:" id="vX6-Dk-Ewl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>

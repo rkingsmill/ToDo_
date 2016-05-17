@@ -10,8 +10,9 @@
 #import "DetailViewController.h"
 #import "ToDo.h"
 #import "TableViewCell.h"
+#import "EnterInfoViewController.h"
 
-@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, EnterInfoViewControllerDelegate>
 
 @property NSMutableArray *objects;
 @end
@@ -53,7 +54,6 @@
     toDo4.details = @"Buy gift and ksdhfkdsfhkds skdjfskdjfh aijksdfsdfkjsdfskjdf hdfhjsdf skdjfdskjf";
     toDo4.priorityNumber = 3;
     toDo4.completedIndicator = NO;
-    
 
 }
 
@@ -66,25 +66,37 @@
 }
 
 - (void)insertNewObject:(id)sender {
+    
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
-   
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    //ToDo *toDo = [ToDo new];
+//    [self.objects insertObject: toDo atIndex:0];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+     [self performSegueWithIdentifier: @"EnterInfo" sender: self];
 }
 
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ToDo *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
         [controller setDetailItem:object];
     }
+    
+    if ([[segue identifier] isEqualToString:@"EnterInfo"]) {
+        
+        EnterInfoViewController *controller = (EnterInfoViewController *) [segue destinationViewController];
+        controller.delegate = self;
+    }
 }
+
+
 
 #pragma mark - Table View
 
@@ -157,6 +169,13 @@
 }
 
 
-
+-(void)setNewInfo:(ToDo*)toDo {
+    
+    [self.objects insertObject: toDo atIndex:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    //[self.tableView reloadData];
+    
+}
 
 @end
