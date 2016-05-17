@@ -54,7 +54,10 @@
     toDo4.details = @"Buy gift and ksdhfkdsfhkds skdjfskdjfh aijksdfsdfkjsdfskjdf hdfhjsdf skdjfdskjf";
     toDo4.priorityNumber = 3;
     toDo4.completedIndicator = NO;
-
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.tableView addGestureRecognizer:swipe];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -132,6 +135,7 @@
         cell.textLabel.attributedText = attributeString;
         cell.detailTextLabel.attributedText = attributeString2;
     }
+
     
     switch (toDo.priorityNumber) {
         case 1:
@@ -168,14 +172,38 @@
     }
 }
 
-
 -(void)setNewInfo:(ToDo*)toDo {
     
     [self.objects insertObject: toDo atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    //[self.tableView reloadData];
     
 }
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer*)swipe {
+    
+    
+    if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        
+        CGPoint point = [swipe locationInView:self.tableView];
+        NSIndexPath *cellPath = [self.tableView indexPathForRowAtPoint:point];
+        ToDo *toDo = self.objects[cellPath.row];
+        
+        toDo.completedIndicator = YES;
+        
+  
+        [self.tableView reloadData];
+    
+    }
+}
+
+//CGPoint swipePoint = [sender locationInView:self.tableView];
+//NSIndexPath *indexPathOfSwipedCell = [self.tableView indexPathForRowAtPoint:swipePoint];
+//
+//ToDo *item = self.database.itemsArray[indexPathOfSwipedCell.row];
+//item.isCompleted = YES;
+//
+//self.database.itemsArray[indexPathOfSwipedCell.row] = item;
+
 
 @end
