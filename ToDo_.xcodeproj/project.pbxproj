@@ -14,6 +14,8 @@
 		5BE2B18C1CEB7F71003E63D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE2B18A1CEB7F71003E63D7 /* Main.storyboard */; };
 		5BE2B18E1CEB7F71003E63D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BE2B18D1CEB7F71003E63D7 /* Assets.xcassets */; };
 		5BE2B1911CEB7F71003E63D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE2B18F1CEB7F71003E63D7 /* LaunchScreen.storyboard */; };
+		5BE2B19A1CEB8067003E63D7 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE2B1991CEB8067003E63D7 /* ToDo.m */; };
+		5BE2B19D1CEB8737003E63D7 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE2B19C1CEB8737003E63D7 /* TableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		5BE2B18D1CEB7F71003E63D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BE2B1901CEB7F71003E63D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BE2B1921CEB7F71003E63D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BE2B1981CEB8067003E63D7 /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
+		5BE2B1991CEB8067003E63D7 /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
+		5BE2B19B1CEB8737003E63D7 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		5BE2B19C1CEB8737003E63D7 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +73,11 @@
 				5BE2B1851CEB7F71003E63D7 /* MasterViewController.m */,
 				5BE2B1871CEB7F71003E63D7 /* DetailViewController.h */,
 				5BE2B1881CEB7F71003E63D7 /* DetailViewController.m */,
+				5BE2B19B1CEB8737003E63D7 /* TableViewCell.h */,
+				5BE2B19C1CEB8737003E63D7 /* TableViewCell.m */,
 				5BE2B18A1CEB7F71003E63D7 /* Main.storyboard */,
+				5BE2B1981CEB8067003E63D7 /* ToDo.h */,
+				5BE2B1991CEB8067003E63D7 /* ToDo.m */,
 				5BE2B18D1CEB7F71003E63D7 /* Assets.xcassets */,
 				5BE2B18F1CEB7F71003E63D7 /* LaunchScreen.storyboard */,
 				5BE2B1921CEB7F71003E63D7 /* Info.plist */,
@@ -154,6 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE2B19A1CEB8067003E63D7 /* ToDo.m in Sources */,
+				5BE2B19D1CEB8737003E63D7 /* TableViewCell.m in Sources */,
 				5BE2B1831CEB7F71003E63D7 /* AppDelegate.m in Sources */,
 				5BE2B1861CEB7F71003E63D7 /* MasterViewController.m in Sources */,
 				5BE2B1801CEB7F71003E63D7 /* main.m in Sources */,

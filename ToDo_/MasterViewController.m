@@ -8,8 +8,10 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "ToDo.h"
+#import "TableViewCell.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property NSMutableArray *objects;
 @end
@@ -23,6 +25,36 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    ToDo *toDo1 = [[ToDo alloc] init];
+    ToDo *toDo2 = [[ToDo alloc]init];
+    ToDo *toDo3 = [[ToDo alloc]init];
+    ToDo *toDo4 = [[ToDo alloc]init];
+
+    self.objects = [[NSMutableArray alloc] initWithObjects:toDo1, toDo2, toDo3, toDo4, nil];
+    //self.objects = [NSMutableArray arrayWithObjects:toDo1, toDo2, toDo3, toDo4, nil]
+    
+    toDo1.title = @"Dog";
+    toDo1.details = @"Drop off at cleaners and ksdhfkdsfhkds skdjfskdjfh aijksdfsdfkjsdfskjdf";
+    toDo1.priorityNumber = 3;
+    toDo1.completedIndicator = NO;
+    
+    toDo2.title = @"Lunch";
+    toDo2.details = @"Meet at restaurant and ksdhfkdsfhkds skdjfskdjfh aijksdfsdfkjsdfskjdf jhjhdfhjsjfshfshjsfjhsfhj";
+    toDo2.priorityNumber = 2;
+    toDo2.completedIndicator = YES;
+    
+    toDo3.title = @"Meeting";
+    toDo3.details = @"Do presentation and ksdhfkdsfhkds skdjfskdjfh aijksdfsdfkjsdfskjdf hjbfjdhs dueiwruw";
+    toDo3.priorityNumber = 1;
+    toDo3.completedIndicator = NO;
+    
+    toDo4.title = @"Birthday";
+    toDo4.details = @"Buy gift and ksdhfkdsfhkds skdjfskdjfh aijksdfsdfkjsdfskjdf hdfhjsdf skdjfdskjf";
+    toDo4.priorityNumber = 3;
+    toDo4.completedIndicator = NO;
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -37,6 +69,7 @@
     if (!self.objects) {
         self.objects = [[NSMutableArray alloc] init];
     }
+   
     [self.objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -47,7 +80,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        ToDo *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
         [controller setDetailItem:object];
     }
@@ -64,11 +97,49 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    ToDo *toDo = [self.objects objectAtIndex:indexPath.row];
+    cell.textLabel.text = toDo.title;
+    cell.detailTextLabel.text = toDo.details;
+    
+    
+    if (toDo.completedIndicator == YES) {
+        
+        NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:toDo.title];
+        [attributeString addAttribute:NSStrikethroughStyleAttributeName
+                                value:@2
+                                range:NSMakeRange(0, [attributeString length])];
+        
+        NSMutableAttributedString *attributeString2 = [[NSMutableAttributedString alloc] initWithString:toDo.details];
+        [attributeString2 addAttribute:NSStrikethroughStyleAttributeName
+                                value:@2
+                                range:NSMakeRange(0, [attributeString2 length])];
+        
+        cell.textLabel.attributedText = attributeString;
+        cell.detailTextLabel.attributedText = attributeString2;
+    }
+    
+    switch (toDo.priorityNumber) {
+        case 1:
+            cell.backgroundColor = [UIColor redColor];
+            break;
+            
+        case 2:
+            cell.backgroundColor = [UIColor yellowColor];
+            break;
+            
+        case 3:
+            cell.backgroundColor = [UIColor greenColor];
+            
+        default:
+            break;
+            
+    }
+    
     return cell;
+
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,5 +155,8 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
+
+
+
 
 @end
